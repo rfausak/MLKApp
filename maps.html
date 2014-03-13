@@ -35,6 +35,10 @@ left : 37.335486, -121.886340 ...
 bottom : 37.334880, -121.885057
 right : 37.33526, -121.883766
 
+https://www.google.com/maps/place/150+E+San+Fernando+St/@37.3354297,-121.8849654,20z/data=!3m1!5s0x808fccbbfc7cec57:0x74d9a902a9bfc6d0!4m2!3m1!1s0x808fccbbfc717863:0xbcd7b643f13145d5
+
+new top right: 37.336027, -121.883861
+
 
 new coords:
 center: 37.33552630743207, -121.88498558035661
@@ -43,10 +47,14 @@ ta: 37.33610211206025, 37.334950498389865,
 
 */
 
-  var newark = new google.maps.LatLng(37.335487,-121.885087);
+  var newark = new google.maps.LatLng(37.335438, -121.885036);//37.335487,-121.885087);
   var imageBounds = new google.maps.LatLngBounds(
-  new google.maps.LatLng(37.334849, -121.886517),
-      new google.maps.LatLng(37.336056, -121.883663)
+  //sw, ne
+  //
+  new google.maps.LatLng(37.334847, -121.886208),
+ // new google.maps.LatLng(37.334848, -121.883861),
+  new google.maps.LatLng(37.336027, -121.883861)
+      //new google.maps.LatLng(37.336056, -121.883663)
 	  
       );
 
@@ -72,7 +80,7 @@ function AlertPos (map, location) {
 	console.log(location);
 }
   historicalOverlay = new google.maps.GroundOverlay(
-      'll.png',
+      'll-new.png',
       imageBounds);
 
   addOverlay();
