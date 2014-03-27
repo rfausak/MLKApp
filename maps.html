@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Remove an overlay</title>
-    <style>
+<head>
+      <!-- JQM -->
+	    <style>
       html, body, #map-canvas {
         height: 100%;
         margin: 0px;
@@ -21,14 +19,21 @@
         border: 1px solid #999;
       }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script>
-// This example adds a UI control allowing users to remove the
-// ground overlay from the map.
-
+	<title>MLK Library</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+     <!-- END OF JQM -->
+    <!-- Google Api V3 Declaration -->    
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <!-- End of Google Api V3 Declaration -->  
+<script>
 var historicalOverlay;
 var map;
-
+var mapLoaded = false;
+var prevCenter = null;
 function initialize() {
 /*top : 37.336030, -121.885133 ... max first, 
 left : 37.335486, -121.886340 ... 
@@ -47,25 +52,31 @@ ta: 37.33610211206025, 37.334950498389865,
 
 */
 
-  var newark = new google.maps.LatLng(37.335438, -121.885036);//37.335487,-121.885087);
+  var mlkLibraryGPSCoord = new google.maps.LatLng(37.335438, -121.885036);//37.335487,-121.885087);
+  prevCenter = mlkLibraryGPSCoord;
   var imageBounds = new google.maps.LatLngBounds(
   //sw, ne
-  //
+  
   new google.maps.LatLng(37.334847, -121.886208),
- // new google.maps.LatLng(37.334848, -121.883861),
-  new google.maps.LatLng(37.336027, -121.883861)
-      //new google.maps.LatLng(37.336056, -121.883663)
-	  
+  new google.maps.LatLng(37.336027, -121.883861)  
       );
 
   var mapOptions = {
     zoom: 20,
-    center: newark
+    center: mlkLibraryGPSCoord
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-	  
+	  var wHeight = $(document).height();
+	var mapHeight = wHeight - $('#header').height() - $('#footer').height()-34;
+	  $("#map-canvas").css("height", mapHeight);
+google.maps.event.trigger(map, "resize");
+
+
+google.maps.event.addListener(map,'drag',function(event) {
+        prevCenter = map.center;
+    });
 google.maps.event.addListener(map, 'click', function(event) {
     //AlertPos(event);
 	//AlertPos(map, event.latLng);
@@ -94,17 +105,49 @@ function addOverlay() {
 function removeOverlay() {
   historicalOverlay.setMap(null);
 }
+
 // [END region_removal]
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-    </script>
-  </head>
-  <body>
-    <div id="panel">
-      <input onclick="removeOverlay();" type=button value="Remove overlay">
-      <input onclick="addOverlay();" type=button value="Restore overlay">
+$(window).resize(function() {
+console.log("resize");
+map.setCenter(prevCenter);
+	var wHeight = $(window).height();
+	var mapHeight = wHeight - $('#header').height() - $('#footer').height()-34;
+	console.log(mapHeight);
+	$('#map-canvas').css('height', mapHeight);
+	google.maps.event.trigger(map, "resize");
+
+});
+</script>
+</head>
+<body>
+<div data-role="page">
+	<div data-role="header" id="header">
+        <h1>Welcome to the King Library</h1>
+
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#">Locations</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </div>
     </div>
-    <div id="map-canvas"></div>
-  </body>
+        <div data-role="content">
+		<div id="map-canvas"></div>
+				<!--<div id="map-canvas" style="width:100%; height:40px;"></div>-->
+        </div>
+     <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#">King Library</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Menu</a></li>
+                
+            </ul>
+        </div>
+   </div>
+   </div>
+</body>
 </html>
