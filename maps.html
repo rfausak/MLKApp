@@ -62,11 +62,10 @@ ta: 37.33610211206025, 37.334950498389865,
       );
 
   var mapOptions = {
-    zoom: 19,
-	maxZoom: 19, //disable the zoom
+    zoom: 20,
 	minZoom: 19,
-	draggable: false, //disable panning/dragging
-	disableDefaultUI: true, //hide the panning and zoom UI
+	panControl: false,
+	streetViewControl: false,
     center: mlkLibraryGPSCoord
   };
 
@@ -77,6 +76,11 @@ ta: 37.33610211206025, 37.334950498389865,
 	  $("#map-canvas").css("height", mapHeight);
 google.maps.event.trigger(map, "resize");
 
+google.maps.event.addListener(map, 'dragend', function(event) {
+	if (!imageBounds.contains(map.getCenter())) {
+		map.panToBounds(imageBounds);
+	}
+});
 
 google.maps.event.addListener(map,'drag',function(event) {
         prevCenter = map.center;
