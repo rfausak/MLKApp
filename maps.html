@@ -51,8 +51,12 @@ ta: 37.33610211206025, 37.334950498389865,
       );
 
   var mapOptions = {
-    zoom: 20,
-    center: newark
+    zoom: 19,
+	maxZoom: 19, //disable the zoom
+	minZoom: 19,
+    center: newark,
+	draggable: false, //disable panning/dragging
+	disableDefaultUI: true //hide the panning and zoom UI
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
