@@ -21,9 +21,10 @@
     </style>
 	<title>MLK Library</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
-   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+   <link rel="stylesheet" href="jquery.mobile-1.4.2.css" />
+   	<script src="jquery-1.11.0.min.js"></script>
+
+	<script src="jquery.mobile-1.4.2.js"></script>
      <!-- END OF JQM -->
     <!-- Google Api V3 Declaration -->    
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -69,26 +70,26 @@ ta: 37.33610211206025, 37.334950498389865,
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 	  var wHeight = $(document).height();
-	var mapHeight = wHeight - $('#header').height() - $('#footer').height()-34;
+	var mapHeight = wHeight - $('#header').height() - $('#footer').height()-36;
 	  $("#map-canvas").css("height", mapHeight);
 google.maps.event.trigger(map, "resize");
 
 
-google.maps.event.addListener(map,'drag',function(event) {
+
+google.maps.event.addListener(map,'dragend',function(event) {
         prevCenter = map.center;
+		if(!imageBounds.contains(map.center))
+		map.panToBounds(imageBounds);
+    
     });
-google.maps.event.addListener(map, 'click', function(event) {
-    //AlertPos(event);
-	//AlertPos(map, event.latLng);
-	AlertPos(map, map.getBounds());
-  });
+	google.maps.event.addListener(map,'center_changed',function(event) {
+        if(!imageBounds.contains(map.center))
+		map.panToBounds(imageBounds);
+    });
 function AlertPos (map, location) {
 
-    // try to show the latitude and longitude
-    console.log("center");
-	console.log(map.center);
-	console.log("location");
-	console.log(location);
+   
+	
 }
   historicalOverlay = new google.maps.GroundOverlay(
       'll-new.png',
@@ -114,7 +115,7 @@ $(window).resize(function() {
 console.log("resize");
 map.setCenter(prevCenter);
 	var wHeight = $(window).height();
-	var mapHeight = wHeight - $('#header').height() - $('#footer').height()-34;
+	var mapHeight = wHeight - $('#header').height() - $('#footer').height()-36;
 	console.log(mapHeight);
 	$('#map-canvas').css('height', mapHeight);
 	google.maps.event.trigger(map, "resize");
@@ -123,14 +124,14 @@ map.setCenter(prevCenter);
 </script>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" data-theme="b">
 	<div data-role="header" id="header">
-        <h1>Welcome to the King Library</h1>
+        <h1>Main Library Hours 8am-12am</h1>
 
         <div data-role="navbar">
             <ul>
-                <li><a href="#">Locations</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="#">Where do I...</a></li>
+                <li><a href="#">How do I...</a></li>
             </ul>
         </div>
     </div>
@@ -141,10 +142,12 @@ map.setCenter(prevCenter);
      <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
         <div class="ui-grid-d center" data-role="navbar">
             <ul>
-                <li><a href="#">King Library</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Menu</a></li>
-                
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+                <li><a href="#" data-icon="bullets">Menu</a></li>
+                <li><a href="#" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
             </ul>
         </div>
    </div>
