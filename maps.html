@@ -20,6 +20,7 @@
       }
     </style>
 	<title>MLK Library</title>
+	<!-- Copyright © 2014 Andrew R Fausak.  All Rights Reserved. -->
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
    <link rel="stylesheet" href="jquery.mobile-1.4.2.css" />
    	<script src="jquery-1.11.0.min.js"></script>
@@ -112,7 +113,6 @@ function removeOverlay() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 $(window).resize(function() {
-console.log("resize");
 map.setCenter(prevCenter);
 	var wHeight = $(window).height();
 	var mapHeight = wHeight - $('#header').height() - $('#footer').height()-36;
@@ -124,7 +124,7 @@ map.setCenter(prevCenter);
 </script>
 </head>
 <body>
-<div data-role="page" data-theme="b">
+<div data-role="page" data-theme="b" id="home">
 	<div data-role="header" id="header">
         <h1>Main Library Hours 8am-12am</h1>
 
@@ -144,13 +144,78 @@ map.setCenter(prevCenter);
             <ul>
                 <li><a href="#" data-icon="action">King</a></li>
                 <li><a href="#" data-icon="calendar">Events</a></li>
-                <li><a href="#" data-icon="bullets">Menu</a></li>
-                <li><a href="#" data-icon="home">Home</a></li>
+                <li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#" data-icon="info">Help</a></li>
 
             </ul>
         </div>
    </div>
    </div>
+   <div data-role="page" id="mainMenu" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#home" data-icon="back">Back</a>
+		<h1>Main Menu</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<div role="main" class="ui-content">
+	<ul data-role="listview" data-theme="a" data-filter="false" data-filter-placeholder="Search ticker or firm name..." data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				<li class="ui-first-child">
+				<a href="#studyRooms" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Study Rooms</a></li>
+				
+				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Circulation Desk</a></li>
+				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Reference Desk (open hours)</a></li>
+				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Restrooms</a></li>
+				<li class="ui-last-child">
+				
+				<a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Elevators</a></li>
+			</ul>
+</div>
+
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
+<div data-role="page" id="studyRooms" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#mainMenu" data-icon="back">Back</a>
+		<h1>Main Menu</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+
+
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
 </body>
+<!-- Copyright © 2014 Andrew R Fausak.  All Rights Reserved. -->
 </html>
