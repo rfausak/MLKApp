@@ -36,7 +36,8 @@ var historicalOverlay;
 var map;
 var mapLoaded = false;
 var prevCenter = null;
-
+var infoWindow = new google.maps.InfoWindow({});
+var markers = [];
 var imageBounds = new google.maps.LatLngBounds(new google.maps.LatLng(37.334847, -121.886208),new google.maps.LatLng(37.336027, -121.883861)  );
 var mlkLibraryGPSCoord = new google.maps.LatLng(37.335438, -121.885036);
 
@@ -108,11 +109,52 @@ function removeOverlay() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 function showStudyRooms(floorNumber) {
+studyRooms = [
+{children: [{x: "37.335431", y: "-121.884799", 
+	title: "SJSU Spartan Collaboration Study Room L67",
+	contentString:'<div id="content" data-theme="c">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+      'sandstone rock formation in the southern part of the '+
+      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+      'Aboriginal people of the area. It has many springs, waterholes, '+
+      'rock caves and ancient paintings. Uluru is listed as a World '+
+      'Heritage Site.</p>'+
+      '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+      'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+      '(last visited June 22, 2009).</p>'+
+      '</div>'+
+      '</div>'
+}]}
+]
+
 switch(floorNumber) {
 	case 0: {historicalOverlay = new google.maps.GroundOverlay(
       'll-new.png',
       imageBounds);
 	      historicalOverlay.setMap(map);
+		  infoWindow = new google.maps.InfoWindow({
+		  content: studyRooms[0].children[0].contentString,
+		  maxWidth: 200
+		  });
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(studyRooms[0].children[0].x, studyRooms[0].children[0].y),
+		  title : studyRooms[0].children[0].title,
+		  map: map
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+			infoWindow.open(map,marker);
+			});
+					  markers.push(marker);
+
 	  }break;
 	  case 2: {historicalOverlay = new google.maps.GroundOverlay(
       '2-new.png',
@@ -143,6 +185,13 @@ switch(floorNumber) {
 }
 function clearMap() {
 removeOverlay();
+try{
+infoWindow.close();
+}catch(e){}
+for(var i = 0; i < markers.length; i++) {
+markers[i].setMap(null);
+}
+markers.length=0;
 }
 $(window).resize(function() {
 map.setCenter(prevCenter);
