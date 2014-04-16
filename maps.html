@@ -109,69 +109,250 @@ function removeOverlay() {
 google.maps.event.addDomListener(window, 'load', initialize);
 function showStudyRooms(floorNumber) {
 studyRooms = [
+//ll
 {children: [{x: "37.335431", y: "-121.884799", 
-	title: "SJSU Spartan Collaboration Study Room L67",
-	contentString:'<div id="content" style="color:black;">'+
-      'test'+
-      '</div>'
-}]}
-]
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'SJSU Spartan Collaboration Study Room L67'+
+      '</div>'},
+	  {x: "37.335776", y: "-121.885040", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L02'+
+      '</div>'},
+	  {x: "37.335776", y: "-121.885040", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L02'+
+      '</div>'},
+	  {x: "37.335801", y: "-121.885079", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L04'+
+      '</div>'}
+]},
+//2nd
+{children: [{x: "37.335713", y: "-121.885141", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 226'+
+      '</div>'},
+	  {x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 224'+
+      '</div>'}
+]},
+//3rd
+{children: [
+{x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 322, 324, 326'+
+      '</div>'},
+	
+	  {x: "37.335375", y: "-121.885291",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 390, 392'+
+      '</div>'}
+]},
+//6th
+{children: [{x: "37.335723", y
 
+: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'},
+	  {x: "37.335429", y: "-121.885341",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 632, 634, 662, 664'+
+      '</div>'}
+]},
+//7th
+{children: [{x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'},
+	  {x: "37.335400", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 732, 734, 762, 764'+
+      '</div>'}
+]},
+//8th
+{children: [{x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'},
+	  {x: "37.335397", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 832, 834, 862, 864'+
+      '</div>'}
+]}
+
+]
 switch(floorNumber) {
 	case 0: {historicalOverlay = new google.maps.GroundOverlay(
       'll-new.png',
       imageBounds);
 	      historicalOverlay.setMap(map);
-		  infoWindow = new google.maps.InfoWindow({
-		  content: studyRooms[0].children[0].contentString,
-		  maxWidth: 200
-		  });
+		  for(var i = 0; i < studyRooms[0].children.length; i++) {
 		  
 		  var marker = new google.maps.Marker({
-		  position : new google.maps.LatLng(studyRooms[0].children[0].x, studyRooms[0].children[0].y),
-		  title : studyRooms[0].children[0].title,
-		  map: map
+		  position : new google.maps.LatLng(studyRooms[0].children[i].x, studyRooms[0].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: studyRooms[0].children[i].contentString,
+		  maxWidth: 200
 		  });
 		  google.maps.event.addListener(marker, 'click', function() {
-			infoWindow.open(map,marker);
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
 			});
-					  markers.push(marker);
-
+		markers.push(marker);
+		}
 	  }break;
 	  case 2: {historicalOverlay = new google.maps.GroundOverlay(
       '2-new.png',
       imageBounds);
-	      historicalOverlay.setMap(map);
-	  }break;
+historicalOverlay.setMap(map);
+		  for(var i = 0; i < studyRooms[1].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(studyRooms[1].children[i].x, studyRooms[1].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: studyRooms[1].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+		}	  }break;
 	  case 3: {historicalOverlay = new google.maps.GroundOverlay(
       '3-new.png',
       imageBounds);
-	      historicalOverlay.setMap(map);
+historicalOverlay.setMap(map);
+		  for(var i = 0; i < studyRooms[1].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(studyRooms[2].children[i].x, studyRooms[2].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: studyRooms[2].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+}
 	  }break;
 	  case 6: {historicalOverlay = new google.maps.GroundOverlay(
       '6-new.png',
       imageBounds);
-	      historicalOverlay.setMap(map);
+historicalOverlay.setMap(map);
+		  for(var i = 0; i < studyRooms[3].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(studyRooms[3].children[i].x, studyRooms[3].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: studyRooms[3].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+}
 	  }break;
 	  case 7: {historicalOverlay = new google.maps.GroundOverlay(
       '7-new.png',
       imageBounds);
-	      historicalOverlay.setMap(map);
+historicalOverlay.setMap(map);
+		  for(var i = 0; i < studyRooms[4].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(studyRooms[4].children[i].x, studyRooms[4].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: studyRooms[4].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+}
 	  }break;
 	  case 8: {historicalOverlay = new google.maps.GroundOverlay(
       '8-new.png',
       imageBounds);
-	      historicalOverlay.setMap(map);
-	  }break;
+historicalOverlay.setMap(map);
+		  for(var i = 0; i < studyRooms[5].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(studyRooms[5].children[i].x, studyRooms[5].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: studyRooms[5].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+}	  }break;
 	  }
 }
 function clearMap() {
 removeOverlay();
-try{
-infoWindow.close();
-}catch(e){}
 for(var i = 0; i < markers.length; i++) {
 markers[i].setMap(null);
+try{
+markers[i]['infoWindow'].close();
+}catch(e){}
 }
 markers.length=0;
 }
