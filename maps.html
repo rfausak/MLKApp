@@ -107,6 +107,120 @@ function removeOverlay() {
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
+function showBathrooms(floorNumber) {
+bathRooms = [
+//ll
+{children: [{x: "37.335462", y: "-121.885356", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+
+]},
+//1st
+{children: [{x: "37.335462", y: "-121.885350", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (1 of 3)"+
+      '</div>'},
+	  {x: "37.335775", y: "-121.884975", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (2 of 3)"+
+      '</div>'},
+	  {x: "37.335480", y: "-121.884662", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (3 of 3)"+
+      '</div>'}
+]},
+//2nd
+{children: [{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (1 of 2)"+
+      '</div>'},
+{x: "37.335462", y: "-121.885354", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (2 of 2)"+
+      '</div>'}
+]},
+//3rd
+{children: [{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (1 of 2)"+
+      '</div>'},
+{x: "37.335462", y: "-121.885354", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (2 of 2)"+
+      '</div>'}
+]},
+//4th
+{children: [{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+]},
+//5th
+{children: [{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+]},
+//6th
+{children: [{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+]},
+//7th
+{children: [{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+]},
+//8th
+{children: [{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+]}
+]
+if(floorNumber == 0){
+historicalOverlay = new google.maps.GroundOverlay(
+      'll-new.png',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  }
+	  else
+	  {
+	  historicalOverlay = new google.maps.GroundOverlay(
+      (floorNumber)+'-new.png',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  }
+try{	      
+		  for(var i = 0; i < bathRooms[floorNumber].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(bathRooms[floorNumber].children[i].x, bathRooms[floorNumber].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: bathRooms[floorNumber].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+		}
+}catch(e){}
+}
+
+
 function showStudyRooms(floorNumber) {
 studyRooms = [
 //ll
@@ -346,6 +460,7 @@ historicalOverlay.setMap(map);
 }	  }break;
 	  }
 }
+
 function clearMap() {
 removeOverlay();
 for(var i = 0; i < markers.length; i++) {
@@ -407,10 +522,9 @@ map.setCenter(prevCenter);
 	<ul data-role="listview" data-theme="a" data-filter="false" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
 				<li class="ui-first-child">
 				<a href="#studyRooms" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Study Rooms</a></li>
-				
 				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Circulation Desk</a></li>
 				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Reference Desk (open hours)</a></li>
-				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Restrooms</a></li>
+				<li><a href="#bathRooms" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Restrooms</a></li>
 				<li class="ui-last-child">
 				
 				<a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Elevators</a></li>
@@ -433,7 +547,46 @@ map.setCenter(prevCenter);
 		
 </div>
 </div>
+<div data-role="page" id="bathRooms" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#mainMenu" data-icon="back">Back</a>
+		<h1>RestRooms</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<ul data-role="listview" data-theme="a" data-filter="false" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				<li class="ui-first-child">
+				<a href="#home" onclick="javascript:clearMap();showBathrooms(0);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Lower Level</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showBathrooms(1);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">1st Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showBathrooms(2);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">2nd Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showBathrooms(3);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">3rd Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showBathrooms(4);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">4th Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showBathrooms(5);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">5th Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showBathrooms(6);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">6th Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showBathrooms(7);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">7th Floor</a></li>
+				<li class="ui-last-child">
+				<a href="#home" onclick="javascript:clearMap();showBathrooms(8);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">8th Floor</a></li>
+			</ul>
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
+
 <div data-role="page" id="studyRooms" data-theme="b" data-url="two">
+
 
 	<div data-role="header">
 	<a href="#mainMenu" data-icon="back">Back</a>
