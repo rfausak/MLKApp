@@ -107,6 +107,216 @@ function removeOverlay() {
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
+function showCirculationDesk(floorNumber){
+circulationDesk = [
+//1st
+{children: [{x: "37.335360", y: "-121.885028", 	
+contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Circulation Desk"+
+      '</div>'}
+]}
+];
+	  historicalOverlay = new google.maps.GroundOverlay(
+      (floorNumber)+'-new.png',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  floorNumber--;
+	  console.log(circulationDesk);
+try{	      
+		  for(var i = 0; i < circulationDesk[floorNumber].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(circulationDesk[floorNumber].children[i].x, circulationDesk[floorNumber].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: circulationDesk[floorNumber].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+		}
+}catch(e){}
+}
+
+function showReferenceDesk(floorNumber){
+referenceDesk = [
+//2nd
+{children: [{x: "37.335538", y: "-121.885172", 	
+contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Reference Desk"+
+      '</div>'}
+
+]},
+//3rd
+{children: [{x: "37.335538", y: "-121.885172", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Reference Desk"+
+      '</div>'}
+
+]}
+]
+
+console.log(floorNumber);
+	  historicalOverlay = new google.maps.GroundOverlay(
+      (floorNumber)+'-new.png',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  floorNumber -= 2;
+	  
+try{	      
+		  for(var i = 0; i < referenceDesk[floorNumber].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(referenceDesk[floorNumber].children[i].x, referenceDesk[floorNumber].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: referenceDesk[floorNumber].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+		}
+}catch(e){}
+}
+function showElevators(floorNumber){
+elevators = [
+//ll
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//M
+{children: [{x: "37.335712", y: "-121.885180", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//1
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//2
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//3
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//4
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//5
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//6
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//7
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//8
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]}
+]
+if(floorNumber == 0){
+historicalOverlay = new google.maps.GroundOverlay(
+      'll-new.png',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  }
+	  else if(floorNumber === "m"){
+	  historicalOverlay = new google.maps.GroundOverlay(
+	  'm-new.png',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  floorNumber = 1;
+	  }
+	  else
+	  {
+	  historicalOverlay = new google.maps.GroundOverlay(
+      (floorNumber)+'-new.png',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  floorNumber++;
+	  }
+try{	      
+		  for(var i = 0; i < elevators[floorNumber].children.length; i++) {
+		  
+		  var marker = new google.maps.Marker({
+		  position : new google.maps.LatLng(elevators[floorNumber].children[i].x, elevators[floorNumber].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: elevators[floorNumber].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+		}
+}catch(e){}
+}
 function showBathrooms(floorNumber) {
 bathRooms = [
 //ll
@@ -114,7 +324,6 @@ bathRooms = [
 	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
       "Men's & Women's Bathrooms"+
       '</div>'}
-
 ]},
 //1st
 {children: [{x: "37.335462", y: "-121.885350", 
@@ -483,22 +692,22 @@ map.setCenter(prevCenter);
 </script>
 </head>
 <body>
+
 <div data-role="page" data-theme="b" id="home">
 	<div data-role="header" id="header">
         <h1>Main Library Hours 8am-12am</h1>
-
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#">Where do I...</a></li>
-                <li><a href="#">How do I...</a></li>
-            </ul>
-        </div>
     </div>
         <div data-role="content">
 		<div id="map-canvas"></div>
         </div>
      <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
         <div class="ui-grid-d center" data-role="navbar">
+		<div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#">Find Books</a></li>
+                <li><a href="#studyRooms">Find Study Room</a></li>
+            </ul>
+        </div>
             <ul>
                 <li><a href="#" data-icon="action">King</a></li>
                 <li><a href="#" data-icon="calendar">Events</a></li>
@@ -510,6 +719,45 @@ map.setCenter(prevCenter);
         </div>
    </div>
    </div>
+     <div data-role="page" id="studyRooms" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#home" data-icon="back">Back</a>
+		<h1>Main Menu</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<div role="main" class="ui-content">
+	<ul data-role="listview" data-theme="a" data-filter="true" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				<li class="ui-first-child">
+				<a href="#studyRooms" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Study Rooms</a></li>
+				<li><a href="#circulationDesk" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Circulation Desk</a></li>
+				<li><a href="#referenceDesk" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Reference Desk (open hours)</a></li>
+				<li><a href="#bathRooms" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Restrooms</a></li>
+				<li class="ui-last-child">
+				
+				<a href="#elevators" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Elevators</a></li>
+			</ul>
+</div>
+
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+  
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
+
    <div data-role="page" id="mainMenu" data-theme="b" data-url="two">
 
 	<div data-role="header">
@@ -522,15 +770,114 @@ map.setCenter(prevCenter);
 	<ul data-role="listview" data-theme="a" data-filter="false" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
 				<li class="ui-first-child">
 				<a href="#studyRooms" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Study Rooms</a></li>
-				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Circulation Desk</a></li>
-				<li><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Reference Desk (open hours)</a></li>
+				<li><a href="#circulationDesk" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Circulation Desk</a></li>
+				<li><a href="#referenceDesk" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Reference Desk (open hours)</a></li>
 				<li><a href="#bathRooms" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Restrooms</a></li>
 				<li class="ui-last-child">
 				
-				<a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Elevators</a></li>
+				<a href="#elevators" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Elevators</a></li>
 			</ul>
 </div>
 
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+  
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
+<div data-role="page" id="circulationDesk" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#mainMenu" data-icon="back">Back</a>
+		<h1>Circulation Desk</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<ul data-role="listview" data-theme="a" data-filter="false" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				
+				<li class="ui-first-child ui-last-child">
+				<a href="#home" onclick="javascript:clearMap();showCirculationDesk(1);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">1st Floor</a></li>
+			</ul>
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
+<div data-role="page" id="referenceDesk" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#mainMenu" data-icon="back">Back</a>
+		<h1>Reference Desk</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<ul data-role="listview" data-theme="a" data-filter="false" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				<li class="ui-first-child">
+				<a href="#home" onclick="javascript:clearMap();showReferenceDesk(2);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">2nd Floor</a></li>
+				<li class="ui-last-child">
+				<a href="#home" onclick="javascript:clearMap();showReferenceDesk(3);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">3rd Floor</a></li>
+			</ul>
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
+
+<div data-role="page" id="elevators" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#mainMenu" data-icon="back">Back</a>
+		<h1>RestRooms</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<ul data-role="listview" data-theme="a" data-filter="false" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				<li class="ui-first-child">
+				<a href="#home" onclick="javascript:clearMap();showElevators(0);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Lower Level</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators(1);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">1st Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators('m');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">M Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators(2);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">2nd Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators(3);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">3rd Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators(4);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">4th Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators(5);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">5th Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators(6);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">6th Floor</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();showElevators(7);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">7th Floor</a></li>
+				<li class="ui-last-child">
+				<a href="#home" onclick="javascript:clearMap();showElevators(8);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">8th Floor</a></li>
+			</ul>
 			
 	</div><!-- /content -->
   <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
