@@ -19,7 +19,7 @@
       }
     </style>
 	<title>MLK Library</title>
-	<!-- Copyright © 2014 Andrew R Fausak.  All Rights Reserved. -->
+<!-- Copyright © 2014 Andrew R Fausak, rfausakcom@gmail.com.  All Rights Reserved.  Permission is granted free of charge for use in San Jose State University and Dr. Martin Luther King Jr. Library.  All others consult Andrew R Fausak, original copyright holder.  All derivations must retain copyright notice.  Failure to retain copyright and license in its entirety will result in loss in any and all right to use this software in any form or derivation of same.-->
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
    <link rel="stylesheet" href="jquery.mobile-1.4.2.css" />
    	<script src="jquery-1.11.0.min.js"></script>
@@ -57,7 +57,6 @@ tg: -121.88627304068376, -121.88369812002946
 ta: 37.33610211206025, 37.334950498389865, 
 
 */
-
   prevCenter = mlkLibraryGPSCoord;
   
 
@@ -91,7 +90,7 @@ function AlertPos (map, location) {
 	
 }
   historicalOverlay = new google.maps.GroundOverlay(
-      '1-new.png',
+      '1-new.PNG',
       imageBounds);
 
   addOverlay();
@@ -117,7 +116,7 @@ contentString:'<div id="content" style="color:black;font-family:verdana;">'+
 ]}
 ];
 	  historicalOverlay = new google.maps.GroundOverlay(
-      (floorNumber)+'-new.png',
+      (floorNumber)+'-new.PNG',
       imageBounds);
 	  historicalOverlay.setMap(map);
 	  floorNumber--;
@@ -125,7 +124,7 @@ contentString:'<div id="content" style="color:black;font-family:verdana;">'+
 try{	      
 		  for(var i = 0; i < circulationDesk[floorNumber].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(circulationDesk[floorNumber].children[i].x, circulationDesk[floorNumber].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -168,7 +167,7 @@ contentString:'<div id="content" style="color:black;font-family:verdana;">'+
 
 console.log(floorNumber);
 	  historicalOverlay = new google.maps.GroundOverlay(
-      (floorNumber)+'-new.png',
+      (floorNumber)+'-new.PNG',
       imageBounds);
 	  historicalOverlay.setMap(map);
 	  floorNumber -= 2;
@@ -176,7 +175,7 @@ console.log(floorNumber);
 try{	      
 		  for(var i = 0; i < referenceDesk[floorNumber].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(referenceDesk[floorNumber].children[i].x, referenceDesk[floorNumber].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -273,13 +272,13 @@ elevators = [
 ]
 if(floorNumber == 0){
 historicalOverlay = new google.maps.GroundOverlay(
-      'll-new.png',
+      'll-new.PNG',
       imageBounds);
 	  historicalOverlay.setMap(map);
 	  }
 	  else if(floorNumber === "m"){
 	  historicalOverlay = new google.maps.GroundOverlay(
-	  'm-new.png',
+	  'm-new.PNG',
       imageBounds);
 	  historicalOverlay.setMap(map);
 	  floorNumber = 1;
@@ -287,7 +286,7 @@ historicalOverlay = new google.maps.GroundOverlay(
 	  else
 	  {
 	  historicalOverlay = new google.maps.GroundOverlay(
-      (floorNumber)+'-new.png',
+      (floorNumber)+'-new.PNG',
       imageBounds);
 	  historicalOverlay.setMap(map);
 	  floorNumber++;
@@ -295,7 +294,7 @@ historicalOverlay = new google.maps.GroundOverlay(
 try{	      
 		  for(var i = 0; i < elevators[floorNumber].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(elevators[floorNumber].children[i].x, elevators[floorNumber].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -392,21 +391,21 @@ bathRooms = [
 ]
 if(floorNumber == 0){
 historicalOverlay = new google.maps.GroundOverlay(
-      'll-new.png',
+      'll-new.PNG',
       imageBounds);
 	  historicalOverlay.setMap(map);
 	  }
 	  else
 	  {
 	  historicalOverlay = new google.maps.GroundOverlay(
-      (floorNumber)+'-new.png',
+      (floorNumber)+'-new.PNG',
       imageBounds);
 	  historicalOverlay.setMap(map);
 	  }
 try{	      
 		  for(var i = 0; i < bathRooms[floorNumber].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(bathRooms[floorNumber].children[i].x, bathRooms[floorNumber].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -428,8 +427,6 @@ try{
 		}
 }catch(e){}
 }
-
-
 function showStudyRooms(floorNumber) {
 studyRooms = [
 //ll
@@ -508,12 +505,12 @@ studyRooms = [
 ]
 switch(floorNumber) {
 	case 0: {historicalOverlay = new google.maps.GroundOverlay(
-      'll-new.png',
+      'll-new.PNG',
       imageBounds);
 	      historicalOverlay.setMap(map);
 		  for(var i = 0; i < studyRooms[0].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(studyRooms[0].children[i].x, studyRooms[0].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -535,12 +532,12 @@ switch(floorNumber) {
 		}
 	  }break;
 	  case 2: {historicalOverlay = new google.maps.GroundOverlay(
-      '2-new.png',
+      '2-new.PNG',
       imageBounds);
 historicalOverlay.setMap(map);
 		  for(var i = 0; i < studyRooms[1].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(studyRooms[1].children[i].x, studyRooms[1].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -561,12 +558,12 @@ historicalOverlay.setMap(map);
 		markers.push(marker);
 		}	  }break;
 	  case 3: {historicalOverlay = new google.maps.GroundOverlay(
-      '3-new.png',
+      '3-new.PNG',
       imageBounds);
 historicalOverlay.setMap(map);
 		  for(var i = 0; i < studyRooms[1].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(studyRooms[2].children[i].x, studyRooms[2].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -588,12 +585,12 @@ historicalOverlay.setMap(map);
 }
 	  }break;
 	  case 6: {historicalOverlay = new google.maps.GroundOverlay(
-      '6-new.png',
+      '6-new.PNG',
       imageBounds);
 historicalOverlay.setMap(map);
 		  for(var i = 0; i < studyRooms[3].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(studyRooms[3].children[i].x, studyRooms[3].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -615,12 +612,12 @@ historicalOverlay.setMap(map);
 }
 	  }break;
 	  case 7: {historicalOverlay = new google.maps.GroundOverlay(
-      '7-new.png',
+      '7-new.PNG',
       imageBounds);
 historicalOverlay.setMap(map);
 		  for(var i = 0; i < studyRooms[4].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(studyRooms[4].children[i].x, studyRooms[4].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -642,12 +639,12 @@ historicalOverlay.setMap(map);
 }
 	  }break;
 	  case 8: {historicalOverlay = new google.maps.GroundOverlay(
-      '8-new.png',
+      '8-new.PNG',
       imageBounds);
 historicalOverlay.setMap(map);
 		  for(var i = 0; i < studyRooms[5].children.length; i++) {
 		  
-		  var marker = new google.maps.Marker({
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
 		  position : new google.maps.LatLng(studyRooms[5].children[i].x, studyRooms[5].children[i].y),
 		  title : "marker",
 		  map: map,
@@ -668,6 +665,220 @@ historicalOverlay.setMap(map);
 		markers.push(marker);
 }	  }break;
 	  }
+}
+
+
+function studyRoomByNumber(roomString) {
+studyRooms = {};
+studyRooms["L67"] = {x: "37.335431", y: "-121.884799", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'SJSU Spartan Collaboration Study Room L67'+
+      '</div>'};
+studyRooms["L02"] ={x: "37.335776", y: "-121.885040", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L02'+
+      '</div>'};
+studyRooms["L04"] =	  {x: "37.335801", y: "-121.885079", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L04'+
+      '</div>'};
+studyRooms["226"] =	{x: "37.335713", y: "-121.885141", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 226'+
+      '</div>'};
+studyRooms["224"] =	{x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 224'+
+      '</div>'};
+studyRooms["322"] ={x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 322, 324, 326'+
+      '</div>'};
+studyRooms["324"] ={x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 322, 324, 326'+
+      '</div>'};
+studyRooms["326"] ={x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 322, 324, 326'+
+      '</div>'};
+
+studyRooms["390"] ={x: "37.335375", y: "-121.885291",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 390, 392'+
+      '</div>'};
+studyRooms["392"] ={x: "37.335375", y: "-121.885291",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 390, 392'+
+      '</div>'};
+studyRooms["602"] ={x: "37.335723", y: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'};
+studyRooms["604"] ={x: "37.335723", y: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'};
+studyRooms["606"] ={x: "37.335723", y: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'};
+studyRooms["622"] ={x: "37.335723", y: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'};
+studyRooms["624"] ={x: "37.335723", y: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'};
+studyRooms["626"] ={x: "37.335723", y: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'};
+
+studyRooms["632"] ={x: "37.335429", y: "-121.885341",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 632, 634, 662, 664'+
+      '</div>'};
+studyRooms["634"] ={x: "37.335429", y: "-121.885341",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 632, 634, 662, 664'+
+      '</div>'};
+studyRooms["662"] ={x: "37.335429", y: "-121.885341",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 632, 634, 662, 664'+
+      '</div>'};
+studyRooms["664"] ={x: "37.335429", y: "-121.885341",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 632, 634, 662, 664'+
+      '</div>'};
+studyRooms["702"] ={x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'};
+studyRooms["704"] ={x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'};
+studyRooms["706"] ={x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'};
+studyRooms["722"] ={x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'};
+studyRooms["724"] ={x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'};
+studyRooms["726"] ={x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'};
+
+studyRooms["732"] ={x: "37.335400", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 732, 734, 762, 764'+
+      '</div>'};
+studyRooms["734"] ={x: "37.335400", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 732, 734, 762, 764'+
+      '</div>'};
+studyRooms["762"] ={x: "37.335400", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 732, 734, 762, 764'+
+      '</div>'};
+studyRooms["764"] ={x: "37.335400", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 732, 734, 762, 764'+
+      '</div>'};
+
+studyRooms["802"] ={x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'};
+studyRooms["804"] ={x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'};
+studyRooms["806"] ={x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'};
+studyRooms["822"] ={x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'};
+studyRooms["824"] ={x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'};
+studyRooms["826"] ={x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'};
+
+studyRooms["832"] ={x: "37.335397", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 832, 834, 862, 864'+
+      '</div>'};
+studyRooms["834"] ={x: "37.335397", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 832, 834, 862, 864'+
+      '</div>'};
+studyRooms["862"] ={x: "37.335397", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 832, 834, 862, 864'+
+      '</div>'};
+studyRooms["864"] ={x: "37.335397", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 832, 834, 862, 864'+
+      '</div>'};
+
+if(roomString.charAt(0) === 'L')
+{
+historicalOverlay = new google.maps.GroundOverlay(
+      'll-new.PNG',imageBounds);
+	  	      historicalOverlay.setMap(map);
+}
+else if(roomString.charAt(0) === '2' ||roomString.charAt(0) === '3' ||roomString.charAt(0) === '6' ||roomString.charAt(0) === '7' ||roomString.charAt(0) === '8'){
+historicalOverlay = new google.maps.GroundOverlay(
+      roomString.charAt(0)+'-new.PNG',imageBounds);
+	  	      historicalOverlay.setMap(map);
+}
+else
+{
+console.log("error");
+return "error";
+}
+
+      try{
+	  var myRoom = studyRooms[roomString];
+		  var marker = new google.maps.Marker({animation: google.maps.Animation.DROP,
+		  position : new google.maps.LatLng(myRoom.x, myRoom.y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: myRoom.contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+		}
+		catch(e) {
+		console.log("error 2");
+		return "error";
+		}
 }
 
 function clearMap() {
@@ -705,7 +916,7 @@ map.setCenter(prevCenter);
 		<div class="ui-grid-d center" data-role="navbar">
             <ul>
                 <li><a href="#">Find Books</a></li>
-                <li><a href="#studyRooms">Find Study Room</a></li>
+                <li><a href="#findStudyRoomByNumber">Find Study Room</a></li>
             </ul>
         </div>
             <ul>
@@ -796,6 +1007,83 @@ map.setCenter(prevCenter);
 		
 </div>
 </div>
+<div data-role="page" id="findStudyRoomByNumber" data-theme="b" data-url="two">
+
+	<div data-role="header">
+	<a href="#mainMenu" data-icon="back">Back</a>
+		<h1>Circulation Desk</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+	<ul data-role="listview" data-theme="a" data-filter="true" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				
+				<li class="ui-first-child ui-last-child">
+				<a href="#home" onclick="javascript:clearMap();studyRoomByNumber('L02');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">L02</a></li>
+				
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('L04');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">L04</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('L67');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">L67</a></li>
+				
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('224');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">224</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('226');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">226</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('322');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">322</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('324');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">324</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('326');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">326</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('390');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">390</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('392');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">392</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('602');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">602</a></li>
+				
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('604');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">604</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('606');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">606</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('622');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">622</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('624');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">624</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('626');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">626</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('632');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">632</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('634');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">634</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('662');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">662</a></li>
+				
+				
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('664');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">664</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('702');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">702</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('704');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">704</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('706');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">706</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('722');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">722</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('724');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">724</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('726');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">726</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('732');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">732</a></li>
+				
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('734');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">734</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('762');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">762</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('764');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">764</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('802');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">802</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('804');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">804</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('806');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">806</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('822');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">822</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('824');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">824</a></li>
+				
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('826');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">826</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('832');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">832</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('834');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">834</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('862');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">862</a></li>
+				<li><a href="#home" onclick="javascript:clearMap();studyRoomByNumber('864');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">864</a></li>
+
+			</ul>
+			
+	</div><!-- /content -->
+  <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+				<li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+		
+</div>
+</div>
+
 <div data-role="page" id="circulationDesk" data-theme="b" data-url="two">
 
 	<div data-role="header">
@@ -806,8 +1094,9 @@ map.setCenter(prevCenter);
 	<div data-role="content">	
 	<ul data-role="listview" data-theme="a" data-filter="false" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
 				
-				<li class="ui-first-child ui-last-child">
+				<li class="ui-first-child">
 				<a href="#home" onclick="javascript:clearMap();showCirculationDesk(1);" class="ui-btn ui-btn-icon-right ui-icon-carat-r">1st Floor</a></li>
+				
 			</ul>
 			
 	</div><!-- /content -->
@@ -970,5 +1259,5 @@ map.setCenter(prevCenter);
 </div>
 </div>
 </body>
-<!-- Copyright © 2014 Andrew R Fausak.  All Rights Reserved. -->
+<!-- Copyright © 2014 Andrew R Fausak, rfausakcom@gmail.com.  All Rights Reserved.  Permission is granted free of charge for use in San Jose State University and Dr. Martin Luther King Jr. Library.  All others consult Andrew R Fausak, original copyright holder.  All derivations must retain copyright notice.  Failure to retain copyright and license in its entirety will result in loss in any and all right to use this software in any form or derivation of same.-->
 </html>
