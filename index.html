@@ -31,6 +31,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
     <!-- End of Google Api V3 Declaration -->  
 <script>
+var lastFloor = ''+(-1);
 var historicalOverlay;
 var map;
 var mapLoaded = false;
@@ -39,7 +40,194 @@ var infoWindow = new google.maps.InfoWindow({});
 var markers = [];
 var imageBounds = new google.maps.LatLngBounds(new google.maps.LatLng(37.334847, -121.886208),new google.maps.LatLng(37.336027, -121.883861)  );
 var mlkLibraryGPSCoord = new google.maps.LatLng(37.335438, -121.885036);
+allMainPageItems = [
+//ll
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335462", y: "-121.885356", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'},
+{x: "37.335431", y: "-121.884799", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'SJSU Spartan Collaboration Study Room L67'+
+      '</div>'},
+	  {x: "37.335776", y: "-121.885040", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L02'+
+      '</div>'},
+	  {x: "37.335776", y: "-121.885040", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L02'+
+      '</div>'},
+	  {x: "37.335801", y: "-121.885079", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room L04'+
+      '</div>'}
 
+]},
+//M
+{children: [{x: "37.335712", y: "-121.885180", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'}
+
+]},
+//1st
+{children: [{x: "37.335360", y: "-121.885028", 	
+contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Circulation Desk"+
+      '</div>'},
+{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335462", y: "-121.885350", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (1 of 3)"+
+      '</div>'},
+	  {x: "37.335775", y: "-121.884975", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (2 of 3)"+
+      '</div>'},
+	  {x: "37.335480", y: "-121.884662", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (3 of 3)"+
+      '</div>'}
+]},
+//2nd
+{children: [{x: "37.335538", y: "-121.885172", 	
+contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Reference Desk"+
+      '</div>'},
+{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (1 of 2)"+
+      '</div>'},
+{x: "37.335462", y: "-121.885354", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (2 of 2)"+
+      '</div>'},
+{x: "37.335713", y: "-121.885141", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 226'+
+      '</div>'},
+	  {x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 224'+
+      '</div>'}
+]},
+//3rd
+{children: [{x: "37.335538", y: "-121.885172", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Reference Desk"+
+      '</div>'},
+{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (1 of 2)"+
+      '</div>'},
+{x: "37.335462", y: "-121.885354", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms (2 of 2)"+
+      '</div>'},
+{x: "37.335684", y: "-121.885109",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 322, 324, 326'+
+      '</div>'},
+	
+	  {x: "37.335375", y: "-121.885291",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 390, 392'+
+      '</div>'}
+
+]},
+//4
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+
+]},
+//5
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'}
+
+]},
+//6
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'},
+{x: "37.335723", y: "-121.885126", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 602, 604, 606, 622, 624, 626'+
+      '</div>'},
+	  {x: "37.335429", y: "-121.885341",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 632, 634, 662, 664'+
+      '</div>'}
+]},
+//7
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'},
+{x: "37.335720", y: "-121.885073", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 702, 704, 706, 722, 724, 726'+
+      '</div>'},
+	  {x: "37.335400", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 732, 734, 762, 764'+
+      '</div>'}
+]},
+//8
+{children: [{x: "37.335531", y: "-121.884836", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Elevator"+
+      '</div>'},
+{x: "37.335486", y: "-121.884657", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      "Men's & Women's Bathrooms"+
+      '</div>'},
+{x: "37.335720", y: "-121.885069", 
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 802, 804, 806, 822, 824, 826'+
+      '</div>'},
+	  {x: "37.335397", y: "-121.885358",
+	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
+      'Study Room 832, 834, 862, 864'+
+      '</div>'}
+]}
+];
 function initialize() {
 /*top : 37.336030, -121.885133 ... max first, 
 left : 37.335486, -121.886340 ... 
@@ -145,6 +333,118 @@ try{
 		markers.push(marker);
 		}
 }catch(e){}
+}
+function timer(floorNum) {
+
+if(lastFloor !== floorNum && $('#slider-main').val().toLowerCase() === floorNum){
+clearMap();
+if(floorNum === 'll')
+showFloor('0');
+else
+showFloor(floorNum);
+}
+}
+function initializeSlider() {
+var floors = {
+	10 : "LL",
+	11 : "M",
+	12 : "1",
+	13 : "2",
+	14 : "3",
+	15 : "4",
+	16 : "5",
+	17 : "6",
+	18 : "7",
+	19 : "8"
+};
+$('#slider-main').min = 10;
+$('#slider-main').max = 19;
+$('#slider-main').val("1");
+
+$('#slider-main').bind("change", function(event, ui) {
+
+if(parseInt(''+event.target.value) >= 10 && parseInt(''+event.target.value) <= 19)
+$('#slider-main').val(floors[event.target.value]);
+
+if(event.target.value.toLowerCase() === 'm') {
+var num = 'm';
+setTimeout(function(){timer(num)}, 100);
+}
+
+else if(event.target.value.toLowerCase() === 'll' || event.target.value.toLowerCase() === 'l') {
+
+var num = 'll';
+setTimeout(function(){timer(num)}, 100);
+}
+else if(parseInt(''+event.target.value) >= 0 )
+{
+var num = ''+parseInt(''+event.target.value);
+setTimeout(function(){timer(num)}, 100);
+}
+});
+$('#slider-main').slider({
+	value: 2,
+	min: 0,
+	max: 9,
+	step: 1,
+	slide: function(event, ui){
+	consloe.log("slide");
+	//showFloor(floors[ui.value]);
+	}
+	});
+}
+function showFloor(floorNumber){
+try {
+if(floorNumber == 0){
+historicalOverlay = new google.maps.GroundOverlay(
+      'll-new.PNG',
+      imageBounds);
+	  lastFloor = 'll';
+	  historicalOverlay.setMap(map);
+	  }
+	  else if(floorNumber === "m"){
+	  historicalOverlay = new google.maps.GroundOverlay(
+	  'm-new.PNG',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  floorNumber = 1;
+	  lastFloor = 'm';
+	  }
+	  else
+	  {
+	  historicalOverlay = new google.maps.GroundOverlay(
+      (floorNumber)+'-new.PNG',
+      imageBounds);
+	  historicalOverlay.setMap(map);
+	  	  lastFloor = ''+floorNumber;
+	  floorNumber++;
+	  }
+try{	      
+		  for(var i = 0; i < allMainPageItems[floorNumber].children.length; i++) {
+		  
+		  var marker =     new google.maps.Marker({animation: google.maps.Animation.DROP,
+		  position : new google.maps.LatLng(allMainPageItems[floorNumber].children[i].x, allMainPageItems[floorNumber].children[i].y),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+		  marker['infoWindow'] = new google.maps.InfoWindow({
+		  content: allMainPageItems[floorNumber].children[i].contentString,
+		  maxWidth: 200
+		  });
+		  google.maps.event.addListener(marker, 'click', function() {
+		  try {
+		  for(var b = 0; b < markers.length; b++) {
+		  var currentMarker = markers[i];
+		  currentMarker["infoWindow"].close();
+		  }} catch(e){}
+			this['infoWindow'].open(map,this);
+			});
+		markers.push(marker);
+		}
+}catch(e){console.log(e);}
+}catch(e){console.log(e);}
+
 }
 
 function showReferenceDesk(floorNumber){
@@ -900,13 +1200,17 @@ map.setCenter(prevCenter);
 	google.maps.event.trigger(map, "resize");
 
 });
+
 </script>
 </head>
-<body>
+<body onload="showFloor(1);initializeSlider();">
 
 <div data-role="page" data-theme="b" id="home">
 	<div data-role="header" id="header">
-        <h1>Main Library Hours 8am-12am</h1>
+	<a href="#" data-icon="refresh" onclick="location.reload();"></a>
+	
+        <h1>MLK Jr Library<br />8am-12am</h1>
+<input type="string" data-type="range" data-theme="a" name="slider-2" id="slider-main" data-highlight="true" min="10" max="19" value="12" class="ui-shadow-inset ui-body-inherit ui-corner-all ui-slider-input">
     </div>
         <div data-role="content">
 		<div id="map-canvas"></div>
@@ -1010,7 +1314,7 @@ map.setCenter(prevCenter);
 <div data-role="page" id="findStudyRoomByNumber" data-theme="b" data-url="two">
 
 	<div data-role="header">
-	<a href="#mainMenu" data-icon="back">Back</a>
+	<a href="#home" data-icon="back">Back</a>
 		<h1>Circulation Desk</h1>
 	</div><!-- /header -->
 
