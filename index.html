@@ -77,9 +77,16 @@ allMainPageItems = [
 ]},
 //1st
 {children: [{x: "37.335360", y: "-121.885028", 	
-contentString:'<div id="content" style="color:black;font-family:verdana;">'+
-      "Circulation Desk"+
-      '</div>'},
+contentString:'<div id="content">' +
+                '<div><h2 id="firstHeading" style="color:Grey;">Circulation Desk</h2>' +
+                '<a href="#">Learn More</a>' +
+                '<p style="color:Grey;"><b>10 am - 8 pm</p></b>' +
+                '</div>' +
+                '<div id="bodyContent">' +
+                "<div><img src='./images/circDesk.jpg' height='100' width='100' align='left'>" +
+                '<p style="color:Grey;">Check out materials or get help with your library account.</p></div>' +
+                '</div>' +
+                '</div>'},
 {x: "37.335531", y: "-121.884836", 
 	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
       "Elevator"+
@@ -99,9 +106,16 @@ contentString:'<div id="content" style="color:black;font-family:verdana;">'+
 ]},
 //2nd
 {children: [{x: "37.335538", y: "-121.885172", 	
-contentString:'<div id="content" style="color:black;font-family:verdana;">'+
-      "Reference Desk"+
-      '</div>'},
+contentString:'<div id="content">' +
+                               '<div><h2 id="firstHeading" style="color:Grey;">Reference Desk</h2>' +
+                               '<a href="#">Learn More</a>' +
+                               '<p style="color:Grey;"><b>10 am - 8 pm</p></b>' +
+                               '</div>' +
+                               '<div id="bodyContent">' +
+                               "<div><img src='./images/refDesk.jpg' height='100' width='100' align='left'>" +
+                               '<p style="color:Grey;">Get help with your research needs.</p></div>' +
+                               '</div>' +
+                               '</div>'},
 {x: "37.335531", y: "-121.884836", 
 	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
       "Elevator"+
@@ -125,9 +139,16 @@ contentString:'<div id="content" style="color:black;font-family:verdana;">'+
 ]},
 //3rd
 {children: [{x: "37.335538", y: "-121.885172", 
-	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
-      "Reference Desk"+
-      '</div>'},
+	contentString:'<div id="content">' +
+                               '<div><h2 id="firstHeading" style="color:Grey;">Reference Desk</h2>' +
+                               '<a href="#">Learn More</a>' +
+                               '<p style="color:Grey;"><b>10 am - 8 pm</p></b>' +
+                               '</div>' +
+                               '<div id="bodyContent">' +
+                               "<div><img src='./images/refDesk.jpg' height='100' width='100' align='left'>" +
+                               '<p style="color:Grey;">Get help with your research needs.</p></div>' +
+                               '</div>' +
+                               '</div>'},
 {x: "37.335531", y: "-121.884836", 
 	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
       "Elevator"+
@@ -298,9 +319,16 @@ function showCirculationDesk(floorNumber){
 circulationDesk = [
 //1st
 {children: [{x: "37.335360", y: "-121.885028", 	
-contentString:'<div id="content" style="color:black;font-family:verdana;">'+
-      "Circulation Desk"+
-      '</div>'}
+contentString:'<div id="content">' +
+                '<div><h2 id="firstHeading" style="color:Grey;">Circulation Desk</h2>' +
+                '<a href="#">Learn More</a>' +
+                '<p style="color:Grey;"><b>10 am - 8 pm</p></b>' +
+                '</div>' +
+                '<div id="bodyContent">' +
+                "<div><img src='./images/circDesk.jpg' height='100' width='100' align='left'>" +
+                '<p style="color:Grey;">Check out materials or get help with your library account.</p></div>' +
+                '</div>' +
+                '</div>'}
 ]}
 ];
 	  historicalOverlay = new google.maps.GroundOverlay(
@@ -451,16 +479,30 @@ function showReferenceDesk(floorNumber){
 referenceDesk = [
 //2nd
 {children: [{x: "37.335538", y: "-121.885172", 	
-contentString:'<div id="content" style="color:black;font-family:verdana;">'+
-      "Reference Desk"+
-      '</div>'}
+contentString:'<div id="content">' +
+                               '<div><h2 id="firstHeading" style="color:Grey;">Reference Desk</h2>' +
+                               '<a href="#">Learn More</a>' +
+                               '<p style="color:Grey;"><b>10 am - 8 pm</p></b>' +
+                               '</div>' +
+                               '<div id="bodyContent">' +
+                               "<div><img src='./images/refDesk.jpg' height='100' width='100' align='left'>" +
+                               '<p style="color:Grey;">Get help with your research needs.</p></div>' +
+                               '</div>' +
+                               '</div>'}
 
 ]},
 //3rd
 {children: [{x: "37.335538", y: "-121.885172", 
-	contentString:'<div id="content" style="color:black;font-family:verdana;">'+
-      "Reference Desk"+
-      '</div>'}
+	contentString:'<div id="content">' +
+                               '<div><h2 id="firstHeading" style="color:Grey;">Reference Desk</h2>' +
+                               '<a href="#">Learn More</a>' +
+                               '<p style="color:Grey;"><b>10 am - 8 pm</p></b>' +
+                               '</div>' +
+                               '<div id="bodyContent">' +
+                               "<div><img src='./images/refDesk.jpg' height='100' width='100' align='left'>" +
+                               '<p style="color:Grey;">Get help with your research needs.</p></div>' +
+                               '</div>' +
+                               '</div>'}
 
 ]}
 ]
