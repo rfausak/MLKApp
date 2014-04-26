@@ -23,6 +23,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
    <link rel="stylesheet" href="jquery.mobile-1.4.2.css" />
    	<script src="jquery-1.11.0.min.js"></script>
+   	<script src="bookNumberIndex.js"></script>
 
 	<script src="jquery.mobile-1.4.2.js"></script>
      <!-- END OF JQM -->
@@ -282,7 +283,6 @@ ta: 37.33610211206025, 37.334950498389865,
 google.maps.event.trigger(map, "resize");
 
 
-
 google.maps.event.addListener(map,'dragend',function(event) {
         prevCenter = map.center;
 		if(!imageBounds.contains(map.center))
@@ -312,7 +312,6 @@ function addOverlay() {
 function removeOverlay() {
   historicalOverlay.setMap(null);
 }
-
 
 google.maps.event.addDomListener(window, 'load', initialize);
 function showCirculationDesk(floorNumber){
@@ -416,7 +415,7 @@ $('#slider-main').slider({
 	max: 9,
 	step: 1,
 	slide: function(event, ui){
-	consloe.log("slide");
+	console.log("slide");
 	//showFloor(floors[ui.value]);
 	}
 	});
@@ -1009,6 +1008,30 @@ historicalOverlay.setMap(map);
 	  }
 }
 
+function showLocation(type){
+    var pinInfo = bookNumberIndex[type];
+    historicalOverlay = new google.maps.GroundOverlay(
+      (pinInfo.floor)+'-new.PNG',
+      imageBounds);
+      $.mobile.changePage( "#home", { transition: "slideup"} );
+      clearMap();
+	  historicalOverlay.setMap(map);
+	  $('#slider-main').val(String(pinInfo.floor));
+	  var infowindow = new google.maps.InfoWindow({
+      content: pinInfo.contentString,
+      maxWidth: 200
+        });
+	  var newMarker = new google.maps.Marker({animation: google.maps.Animation.DROP,
+		  position : new google.maps.LatLng(pinInfo.lat, pinInfo.long),
+		  title : "marker",
+		  map: map,
+		  draggable: false
+		  });
+      google.maps.event.addListener(newMarker, 'click', function() {
+            infowindow.open(map, newMarker);
+       });
+       markers.push(newMarker);
+}
 
 function studyRoomByNumber(roomString) {
 studyRooms = {};
@@ -1261,7 +1284,7 @@ map.setCenter(prevCenter);
         <div class="ui-grid-d center" data-role="navbar">
 		<div class="ui-grid-d center" data-role="navbar">
             <ul>
-                <li><a href="#">Find Books</a></li>
+                <li><a href="#findBooks">Find Books</a></li>
                 <li><a href="#findStudyRoomByNumber">Find Study Room</a></li>
             </ul>
         </div>
@@ -1611,11 +1634,11 @@ map.setCenter(prevCenter);
     <div data-role="content">
         <ul ul data-role="listview" data-theme="a" data-filter="false" data-inset="true"
             class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-            <li data-icon="false"><a href="#">FAQ</a></li>
-            <li data-icon="false"><a href="#">24hr Live chat Conference</a></li>
-            <li data-icon="false"><a href="#">Research Guide by Subject</a></li>
-            <li data-icon="false"><a href="#">Find a librarian</a></li>
-            <li data-icon="false"><a href="#">Tech Help</a></li>
+            <li data-icon="false"><a href="http://answers.sjlibrary.org/">FAQ</a></li>
+            <li data-icon="false"><a href="http://library.sjsu.edu/ask-librarian/ask-librarian">24hr Live chat Conference</a></li>
+            <li data-icon="false"><a href="http://libguides.sjsu.edu/index">Research Guide by Subject</a></li>
+            <li data-icon="false"><a href="http://library.sjsu.edu/sjsu-library-staff-directory/sjsu-library-subject-liaisons">Find a librarian</a></li>
+            <li data-icon="false"><a href="http://library.sjsu.edu/student-technology-training-center/student-technology-training-center">Tech Help</a></li>
         </ul>
     </div>
     <div data-role="footer" data-id="foo1" data-position="fixed">
@@ -1631,6 +1654,71 @@ map.setCenter(prevCenter);
     </div>
 
 </div>
+<div data-role="page" id="findBooks" data-theme="b" data-url="two">
+
+    <div data-role="header">
+        <a href="#home" data-icon="back">Back</a>
+
+        <h1>Main Menu</h1>
+    </div>
+    <!-- /header -->
+
+    <div data-role="content">
+        <div role="main" class="ui-content">
+                <label>Find Books:</label>
+                <ul data-role="listview" data-theme="a" data-filter="true"  data-filter-reveal="true" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis A - BL');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis A - BL</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis BM');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis BM</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis CJ - DT');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis CJ - DT</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis E - HB');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis E - HB</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis HC - HM');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis HC - HM</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis HC - HM');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis HC - HM</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis HQ - JN');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis HQ - JN</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis JQ');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis JQ</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis LB');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis LB</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis PA - PR');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis PA - PR</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis PR - PZ');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis PR - PZ</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis QD');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis QD</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis R - S');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis R - S</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Thesis TK - Z');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Thesis TK - Z</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Folio N');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Folio N</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Folio G');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Folio G</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Folio F');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Folio F</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Folio A');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Folio A</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Fiction');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Fiction</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Non-fiction');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Non-Fiction</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('J Fiction');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">J Fiction</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('Ethnic Studies');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Ethnic Studies</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('A - JA');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">A - JA</a></li>
+                    <li><a href="#home" onclick="javascript:clearMap();showLocation('JA - Z');" class="ui-btn ui-btn-icon-right ui-icon-carat-r">JA - Z</a></li></ul>
+                <div id="notFound" style="display:none">
+                    <p>The call number was not found.</p>
+                </div>
+            <p>Ex. Thesis A, Folio F</p>
+
+            <p>Don't have a call number?</p>
+            <a href="http://catalog.sjlibrary.org/search/" data-role="button">Search the SJSU Catalog</a>
+        </div>
+
+    </div>
+    <!-- /content -->
+    <div data-role="footer" data-id="foo1" data-position="fixed" id="footer">
+
+        <div class="ui-grid-d center" data-role="navbar">
+            <ul>
+                <li><a href="#" data-icon="action">King</a></li>
+                <li><a href="#" data-icon="calendar">Events</a></li>
+                <li><a href="#mainMenu" data-icon="bullets">Menu</a></li>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#help" data-icon="info">Help</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+
 </body>
 <!-- Copyright © 2014 Andrew R Fausak, rfausakcom@gmail.com.  All Rights Reserved.  Permission is granted free of charge for use in San Jose State University and Dr. Martin Luther King Jr. Library.  All others consult Andrew R Fausak, original copyright holder.  All derivations must retain copyright notice.  Failure to retain copyright and license in its entirety will result in loss in any and all right to use this software in any form or derivation of same.-->
 </html>
